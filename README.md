@@ -137,6 +137,10 @@ N10 → N11: Terceira chamada recursiva para retorno dos resultados.
 
 Total de arestas: E = 10.
 
+### Desenho do grafo
+
+![alt text](image.png)
+
 ### Complexidade Ciclomática: 𝑀 = 𝐸 − 𝑁 + 2𝑃
 𝐸: Número de arestas no grafo.
 
@@ -145,6 +149,49 @@ Total de arestas: E = 10.
 𝑃: Número de componentes conexos no grafo.
 
 Substituindo: M = 10 - 11 + 2(1) -> M = 1
+
+### Complexidade Assintótica
+#### Complexidade Temporal
+1. O algoritmo divide os números em duas partes de tamanho 𝑚 = 𝑛 / 2m = n / 2.
+
+2. Realiza três chamadas recursivas:
+    x1 = karatsuba(menor,menor2)
+    x2 = karatsuba(menor+maior,menor2+maior2)
+    x3 = karatsuba(maior,maior2)
+
+3. Além das chamadas recursivas, há operações de soma e deslocamento (O(n))
+
+A recorrência é dada por:
+
+    T(n)=3T(n/2)+O(n)
+    
+Utilizando o Teorema Mestre: (T(n)=aT(n/b)+O(n^d)) 
+
+    a=3 (três chamadas recursivas),
+    b=2 (tamanho reduzido pela metade a cada passo),
+    d=1 (operações fora da recursão são O(n)).
+
+Pelo Teorema Mestre, o caso dominante é O(n^log 3 na base 2)
+
+#### Complexidade Espacial
+
+A complexidade espacial do algoritmo é dominada pela profundidade da recursão. Como cada chamada divide o problema ao meio, a profundidade da recursão é 𝑂(log 𝑛).
+
+Melhor Caso, Caso Médio e Pior Caso:
+    Melhor Caso: Ocorre quando um dos números é pequeno (O(1)).
+    Caso Médio: Segue a recorrência e mantém O(n^log 3 na base 2)
+    Pior Caso: Ocorre para números grandes, seguindo O(n^log 3 na base 2).
+
+
+
+
+
+
+
+
+
+
+
 
 
 
